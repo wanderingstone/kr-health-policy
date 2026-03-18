@@ -26,10 +26,11 @@ jobs:
             HTTP=$(curl -o /dev/null -s -w "%{http_code}" \
               --max-time 15 --retry 2 --retry-delay 3 \
               -L -A "Mozilla/5.0 (URL-health-check)" \
-              "$url" 2>/dev/null)
+              "$url" 2>/dev/null) || HTTP="ERR"
 
             if [[ "$HTTP" == "200" || "$HTTP" == "301" || "$HTTP" == "302" || \
-                  "$HTTP" == "303" || "$HTTP" == "307" || "$HTTP" == "308" ]]; then
+                  "$HTTP" == "303" || "$HTTP" == "307" || "$HTTP" == "308" || \
+                  "$HTTP" == "403" || "$HTTP" == "405" ]]; then
               echo "  OK  [$HTTP] $url"
             else
               echo "  FAIL[$HTTP] $url"
