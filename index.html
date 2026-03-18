@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국 보건의료 정책 자료 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:15px;line-height:1.75;color:#202122;background:#e8eaed}
+a{color:#3366cc;text-decoration:none}
+a:hover{text-decoration:underline;color:#0645ad}
+#outer{max-width:1200px;margin:0 auto;background:#fff;border-left:1px solid #a2a9b1;border-right:1px solid #a2a9b1;min-height:100vh;display:flex;flex-direction:column}
+#masthead{padding:16px 24px 12px;border-bottom:3px solid #2c4a7c;background:#fff;flex-shrink:0}
+#masthead-title{font-size:24px;font-weight:700;color:#2c4a7c;letter-spacing:-0.02em;line-height:1.2}
+#masthead-sub{font-size:12px;color:#54595d;margin-top:4px}
+#body{display:flex;flex:1;min-height:0}
+#sidebar{width:220px;flex-shrink:0;border-right:1px solid #a2a9b1;background:#f8f9fa;display:flex;flex-direction:column;overflow-y:auto}
+.nav-section{border-bottom:1px solid #a2a9b1;padding:10px 0}
+.nav-cat{font-size:13px;font-weight:700;color:#202122;padding:6px 14px 4px;display:block}
+.nav-item{display:block;padding:6px 14px 6px 22px;font-size:13px;font-weight:500;color:#202122;cursor:pointer;border-left:3px solid transparent;line-height:1.4}
+.nav-item:hover{background:#eaecf0;color:#0645ad}
+.nav-item.active{background:#eaf3ff;border-left-color:#2c4a7c;color:#2c4a7c;font-weight:700}
+.nav-sub{display:block;padding:3px 14px 3px 30px;font-size:12px;color:#3366cc;cursor:pointer;line-height:1.6}
+.nav-sub:hover{color:#0645ad;text-decoration:underline}
+#sidebar-footer{margin-top:auto;padding:12px 14px;border-top:1px solid #a2a9b1;font-size:11px;color:#54595d;line-height:1.7}
+#sidebar-footer a{color:#3366cc;font-size:11px;word-break:break-all}
+#content-wrap{flex:1;min-width:0;display:flex;flex-direction:column;overflow-y:auto}
+#dl-bar{background:#eaf3ff;border-bottom:1px solid #a2a9b1;padding:7px 18px;display:flex;align-items:center;gap:8px;font-size:12px;color:#54595d;flex-wrap:wrap;flex-shrink:0}
+.dl-btn{padding:3px 11px;font-size:12px;border:1px solid #a2a9b1;border-radius:2px;background:#fff;color:#202122;cursor:pointer;font-family:inherit;line-height:1.5}
+.dl-btn:hover{background:#f8f9fa;border-color:#72777d;color:#0645ad}
+.dl-sep{color:#c8ccd1}
+.page{display:none;padding:24px 30px 60px;flex:1}
+.page.active{display:block}
+.page-header{border-bottom:1px solid #a2a9b1;margin-bottom:20px;padding-bottom:8px}
+.page-header h1{font-size:22px;font-weight:700;color:#202122}
+.page-meta{font-size:12px;color:#54595d;margin-top:5px}
+.dl-box{display:inline-flex;align-items:center;gap:10px;background:#f0f7ff;border:1px solid #b3d4ff;border-radius:4px;padding:9px 16px;margin:0 0 20px;font-size:13px}
+.dl-box a{color:#2c4a7c;font-weight:700}
+.dl-box a:hover{text-decoration:underline}
+.md-body h2{font-size:18px;font-weight:700;border-bottom:1px solid #a2a9b1;margin:24px 0 10px;padding-bottom:5px;color:#202122}
+.md-body h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:#202122}
+.md-body h4{font-size:14px;font-weight:700;margin:12px 0 6px;color:#202122}
+.md-body p{margin:0 0 10px;font-size:14px}
+.md-body ul,.md-body ol{margin:0 0 10px;padding-left:24px;font-size:14px}
+.md-body li{margin-bottom:4px;line-height:1.7}
+.md-body li ul,.md-body li ol{margin:3px 0 4px}
+.md-body code{background:#f8f9fa;border:1px solid #eaecf0;padding:1px 4px;border-radius:2px;font-size:12px;font-family:monospace}
+.md-body a{color:#3366cc}
+.md-body a:hover{text-decoration:underline;color:#0645ad}
+.md-body hr{border:none;border-top:1px solid #a2a9b1;margin:16px 0}
+.md-body table{border-collapse:collapse;width:100%;margin:0 0 14px;font-size:13px}
+.md-body th{background:#eaecf0;border:1px solid #a2a9b1;padding:6px 10px;text-align:left;font-weight:700}
+.md-body td{border:1px solid #a2a9b1;padding:5px 10px;vertical-align:top}
+.md-body tr:nth-child(even) td{background:#f8f9fa}
+.md-body strong{font-weight:700}
+.md-body em{font-style:italic}
+@media print{
+  #sidebar,#dl-bar,#masthead{display:none!important}
+  #outer{border:none}#body{display:block}
+  .page{display:none!important;padding:0}.page.active{display:block!important}
+  body{font-size:13px;background:#fff}
+  .md-body table{font-size:11px}
+}
+</style>
+</head>
+<body>
+<div id="outer">
+<div id="masthead">
+  <div id="masthead-title">한국 보건의료 정책 자료 가이드</div>
+  <div id="masthead-sub">보건의료 중 정책 관련 · 한국 자료 · 2026.03 기준 · 기술적 내용은 시점에 따라 달라질 수 있음</div>
+</div>
+<div id="body">
+<nav id="sidebar">
+  <div class="nav-section">
+    <span class="nav-cat">통계 · 데이터</span>
+    <span class="nav-item active" onclick="showPage('stats')">보건의료 통계 · 데이터</span>
+    <span class="nav-sub" onclick="goTo('stats','통계')">· 통계</span>
+    <span class="nav-sub" onclick="goTo('stats','데이터')">· 데이터</span>
+    <span class="nav-sub" onclick="goTo('stats','시각화')">· 시각화</span>
+  </div>
+  <div class="nav-section">
+    <span class="nav-cat">Gray Literature</span>
+    <span class="nav-item" onclick="showPage('gray1')">Part 1. 기관별 검색</span>
+    <span class="nav-sub" onclick="goTo('gray1','A. 정부 기관')">· 정부 기관</span>
+    <span class="nav-sub" onclick="goTo('gray1','B. 민간 기관')">· 민간 단체</span>
+    <span class="nav-sub" onclick="goTo('gray1','C. 전국공공')">· 공공보건의료지원단</span>
+    <span class="nav-item" onclick="showPage('gray2')">Part 2. 통합 DB 검색</span>
+    <span class="nav-sub" onclick="goTo('gray2','검색 우선 순위')">· 검색 우선순위</span>
+    <span class="nav-sub" onclick="goTo('gray2','기관/단체별')">· 기관별 상세</span>
+  </div>
+  <div id="sidebar-footer">
+    <div style="margin-bottom:6px">보건의료정책 관련 한국 자료 한정</div>
+    <div>문의:<br><a href="mailto:wanderingstone@gmail.com">wanderingstone@gmail.com</a></div>
+  </div>
+</nav>
+<div id="content-wrap">
+  <div id="dl-bar">
+    <span>현재 페이지 다운로드:</span>
+    <button class="dl-btn" onclick="downloadMd()">&#x2193; Markdown (.md)</button>
+    <span class="dl-sep">|</span>
+    <button class="dl-btn" onclick="window.print()">&#x2193; PDF (인쇄 저장)</button>
+  </div>
+  <div class="page active" id="p-stats">
+    <div class="page-header">
+      <h1>한국 보건의료 통계와 공개 데이터</h1>
+      <div class="page-meta">2026.03.18 기준 &nbsp;·&nbsp; 보건의료 중 정책 관련, 한국 자료 한정</div>
+    </div>
+    <div class="dl-box">
+      &#x1F4CA;
+      <span>경기도 공공보건의료지원단 지표뱅크 통합지표 (2026.03):</span>
+      <a href="ggpibank_통합지표전체_202603_기준.xlsx" download>&#x2193; Excel 다운로드</a>
+    </div>
+    <div class="md-body" id="md-stats"></div>
+  </div>
+  <div class="page" id="p-gray1">
+    <div class="page-header">
+      <h1>Gray Literature 검색 방법 — Part 1. 정부/민간기관</h1>
+      <div class="page-meta">2026.03.18 기준 &nbsp;·&nbsp; 보건의료 중 정책 관련, 한국 자료 한정</div>
+    </div>
+    <div class="md-body" id="md-gray1"></div>
+  </div>
+  <div class="page" id="p-gray2">
+    <div class="page-header">
+      <h1>Gray Literature 검색 방법 — Part 2. 통합검색</h1>
+      <div class="page-meta">2026.03.18 기준 &nbsp;·&nbsp; 보건의료 중 정책 관련, 한국 자료 한정</div>
+    </div>
+    <div class="md-body" id="md-gray2"></div>
+  </div>
+</div>
+</div>
+</div>
+<script>
+var PAGES={stats:{id:"p-stats",md:"md-stats",fn:"한국_보건의료_통계와_공개_데이터"},gray1:{id:"p-gray1",md:"md-gray1",fn:"한국_보건의료정책_Gray_Literature_검색_방법_Part1"},gray2:{id:"p-gray2",md:"md-gray2",fn:"한국_보건의료정책_Gray_Literature_검색_방법_Part2"}};
+var ORDER=["stats","gray1","gray2"];
+var cur="stats";
+function showPage(k){cur=k;document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active")});document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active")});document.getElementById(PAGES[k].id).classList.add("active");document.querySelectorAll(".nav-item")[ORDER.indexOf(k)].classList.add("active")}
+function goTo(k,t){showPage(k);setTimeout(function(){var b=document.getElementById("md-"+k);var all=b.querySelectorAll("h2,h3,h4,p,li");for(var i=0;i<all.length;i++){if(all[i].textContent.indexOf(t)!==-1){all[i].scrollIntoView({behavior:"smooth",block:"start"});return}}},80)}
+function downloadMd(){var cfg=PAGES[cur];var blob=new Blob([RAW[cur]],{type:"text/markdown;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=cfg.fn+".md";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(a.href)}
+var RAW={};
+RAW["stats"]="## 한국 보건의료 통계와 공개 데이터\n\n2026.03.18 기준\n\n주의 : 기술적인 부분은 시점에 따라 달라질 수 있으며, 보건의료 중에서 정책 관련이고 한국 자료에만 해당\n### 배경\n- 새로울 것은 없으니 빠지지 않고 찾기 위한 정리임\n- AI를 쓰다보니 잘 못찾아내는 웹페이지를 자꾸 놓치게 되어서, 질문 시 이용할 스킬(claude 기준), 단축어 등에 이용하기 위함\n- 웹페이지가 개편되면 방법은 달라짐(2026.3 기준임)\n\n### 검색 방법\n- 통계와 원자료 데이터(raw data)로 구분하였고, 통계는 국가승인통계가 모두 통계청에 정리되어 있고 활용하기 좋으므로 국가승인통계 외를 중심으로 정리\n- 관련하여 통계기반 지도 제공 웹페이지도 정리\n- AI에서 찾을 때는 프롬프트, 설정, 단축어 등으로 활용할 수 있고 claude의 경우 skill로 만들어 놓을 수 있음\n- 구글 검색시에는 해당 웹페이지 주소를 site: 로 지정하여 검색하면 놓치지 않음\n\t  \n### 통계\n- 국가승인통계\n\t- 현재 64개 통계(26년3월기준)\n\t- KOSIS 국가통계포털에서 잘 정리되어 있고 활용하기 편하고 AI 검색에서도 잘 노출됨\n- 국가승인통계 외\n\t- 감염병포털 https://dportal.kdca.go.kr/ : 국가승인통계이나 정제되어 공표되기 전에 매일 업데이트되어 잠정통계로 제공됨 \n\t- 결핵제로 https://tbzero.kdca.go.kr/ : 감염병 중 결핵은 다른 홈페이지에서 공개됨\n\t- 헬스맵 https://www.healthmap.or.kr/ : 국립중앙의료원에서 구축했으며, 건강보험데이터 등으로 자체 재분석하여 정리한 지표 제공\n\t- 국민건강보험공단 \n\t\t- 건강보험공단 빅데이터플랫폼 https://nhiss.nhis.or.kr/\n\t\t- NHISS 의료이용지표 https://nhiss.nhis.or.kr:4443/ : 자체 분석 지표 포함\n\t- 건강보험심사평가원\n\t\t- 보건의료빅데이터개방시스템 [https://gisopendata.hira.or.kr](https://gisopendata.hira.or.kr) \n\t- 응급의료모니터링시스템 https://dw.nemc.or.kr/nemcMonitoring/ : 실시간 응급실 데이터\n- 참고\n\t- 공공데이터포털\n\t\t- https://data.go.kr\n\t\t- 데이터셋과 Open API 통합 DB\n\t\t- 같은 통계 내용도 여기서 한번 더 검색해보면 유용한 형태를 찾을 수 있음\n\t\t- 다만 제공기관별로 업데이트가 달라 수정일 확인 필요\n\t- 경기도공공보건의료지원단 지표뱅크\n\t\t- https://ggpibank.or.kr/\n\t\t- 분야별 지표를 모두 모아서 링크로 제공하고 매년 업데이트됨\n\t\t- 지표명을 클릭하면 설명을 엑셀파일로 다운로드 받을 수 있으며, 모두 모아서 정리한 파일은 이 페이지 상단에서 다운로드 가능함\n\n### 데이터\n\n*  포털\n\t- 통계청 마이크로데이터\n\t\t- https://mdis.mods.go.kr/\n\t\t- 사망원인보완조사, 5세 미만 영유아 출생-사망 연계 포함\n\t- 한국보건사회연구원 보건복지데이터포털\n\t\t- https://www.kihasa.re.kr/dataportal\n\t\t- 국가승인자료+연구과제기반 자료\n\t- 보건의료연구자원정보센터(CODA)\n\t\t- [coda.nih.go.kr](https://coda.nih.go.kr)\n\t\t- 간호사건강연구, 코호트, 바이오데이터 등 포함\n\t\t- 분석 인프라 지원\n- 통계별\n\t- 한국의료패널 https://www.khp.re.kr\n\t- 한국복지패널 https://www.koweps.re.kr\n\t- 한국노동패널 https://www.kli.re.kr/klips\n\t- 고령화연구패널, 청년패널조사 https://survey.keis.or.kr/\n\t- 국민건강영양조사 https://knhanes.kdca.go.kr/knhanes\n\t- 지역사회건강조사 https://chs.kdca.go.kr/chs/\n\t- 암등록자료 https://kccrsurvey.cancer.go.kr\n\t- 청소년건강행태조사 https://www.kdca.go.kr/yhs/\n\t- 손상조사\n\t\t- https://www.kdca.go.kr/injury\n\t\t- 4종 응급실손상환자심층조사, 퇴원손상심층조사, 지역사회기반 중증외상조사, 급성심장정지조사\n\t- 응급의료자료 응급의료모니터링시스템 https://dw.nemc.or.kr/nemcMonitoring/data/user/DataUseInfoMain.do\n- 건강보험/임상 데이터\n\t- 건강보험공단 : 노인코호트, 표본코호트, 검진코호트, 저위험표본\n\t- 건강보험심사평가원 : 의료이용정보 표본 데이터셋, 보건의료영상진료데이터, CDM, 맞춤형익명통계\n\t- 보건의료 빅데이터 통합플랫폼 https://hcdl.mohw.go.kr/ 다기관연계\n\t- 국가암데이터센터 https://www.cancerdata.re.kr/ 다기관포함\n- 참고\n\t- 보건의료분야 결합전문기관\n\t\t- [datalink.mohw.go.kr](https://datalink.mohw.go.kr)\n\t\t- 지정된 기관이 가명정보 익명 결합하는 절차 소개\n\t- 국가연구데이터플랫폼 DataOn\n\t\t- [dataon.kisti.re.kr](https://dataon.kisti.re.kr)\n\t\t- 연구자가 직접 등록할 수도 있어 유용하나 보건의료분야는 아직 데이터가 적음\n\n### 시각화\n- 통계청 SGIS 통계지리정보서비스([sgis.kostat.go.kr](https://sgis.kostat.go.kr)) : 데이터 업로드해서 GIS이용 가능\n- 건강보험심사평가원 의료이용지도([gisopendata.hira.or.kr](https://gisopendata.hira.or.kr))\n- 헬스맵([healthmap.or.kr](https://healthmap.or.kr)) \n- 응급의료통계포털 지도통계(https://e-medis.nemc.or.kr/)\n- 지역사회건강조사 한눈에보기(https://chs.kdca.go.kr/cdhs/biz/dashBoard/cdhsDash/cdhsDashMain.do)\n- 건강보험공단 의료이용지표(https://nhiss.nhis.or.kr:4443/) : 로그인 후 사용 가능\n- 질병관리청 감염병통계대시보드 https://dportal.kdca.go.kr/pot/is/dashboardEDW.do\n\n\n\n";
+RAW["gray1"]="## 한국 보건의료정책 Gray Literature 검색 방법 - Part1. 정부/민간기관\n\n2026.03.18 기준\n\n주의 : 기술적인 부분은 시점에 따라 달라질 수 있으며, 보건의료 중에서 정책 관련이고 한국 자료에만 해당\n### **배경**\n- 첫째, 한국 보건의료정책 관련 자료 중 Gray Literature는 체계적으로 정리되어 있지 않아 검색이 어려움\n\t- Peer review된 논문의 경우도 Pubmed에 등재(Pubmed에 등재되는 한국/외국 저널에 실리는 경우)되지 않으면 마찬가지 상황이며 이에 대해서는 따로 정리 예정\n\t- Gray Literature(회색 문헌) : 학술지나 상업 출판물을 통해 정식 배포되지 않고 비공식 채널로 유통되는 연구·정책 자료. 주로 정부 보고서, 토론회 자료집, 백서, 컨퍼런스 프로시딩, 정책 브리핑 등을 포함\n- 둘째, 다양한 LLM과 Search Engine(Google 등)에서 검색이 가능하나, 소위 'LLM이 못 보는 자료'(검색되기 좋은 페이지만 검색하여 결과를 제시하는 편향)가 존재하며 잘 알고 있는 분야를 질의했을 때 검토 Source가 한정된다는 것을 경험할 수 있음\n\t- 특히 웹페이지 구조가 복잡하고 자료 다운로드와 검색에 로그인(SSO)·권한검증·세션쿠키·토큰만료·캡차·Referer 검사 등이 적용되는 경우 구체적으로 검색방법을 지정하지 않으면 포함하지 않게 됨\n- 셋째, 안정적인 아카이빙, 레포지토리가 충분하지 않아 통합적으로 검색할 수 있는 웹페이지가 부족함\n\t- Part1에서는 기관 중심으로 제시하고, Part2는 DB검색(국립중앙도서관, 국회도서관, 사이언스온, 프리즘 등)을 정리할 예정\n\n### 정리 기준 설명\n- 정부 기관, 민간 기관/단체 중 보건의료정책 관련 자료가 있는 웹페이지를 정리\n\t- 포함 기준은 작성자의 주관적 판단이며 가능한 넓게 정했으나, 최근 활동이 전혀 없는 웹페이지는 제외\n- RSS 가능 여부\n\t- RSS는 피드(feed) 구독을 통해 신규 게시물을 리더가 주기적으로 수집·집계해주는 자동 모니터링 방식으로 개별 사이트를 순회하지 않고도 업데이트를 한곳에서 받아보는 구독형 정보 수신 방식임\n\t- RSS가능이라고 표시한 곳은 새로운 연구보고서, 보도자료 등이 올라오면 리더기로 바로 볼 수 있으므로 검색하지 않아도 정보를 얻을 수 있음\n\t- RSS가 가능하려면 웹페이지가 그에 맞게 만들어져야 하고, 불가능한 웹페이지에서도 RSS feed를 생성하는 서비스가 있기는 하나 유료가 많고 무료 기능이 제한적이며 유료여도 100% 성공하지는 않음\n- 주 자료 메뉴는 Gray literature가 주로 있는 메뉴를 정리했으며, 따로 메뉴 여러 곳에 있거나 웹페이지 전체적으로 자료가 있는 곳은 적지 않음\n- 추천 메뉴는 주 자료 메뉴 외에 다양한 자료가 있는 곳으로 특히 정부기관의 경우 사업별 페이지가 따로 있음\n- 알리오에 있음이라는 표시는 공공기관 경영정보 공개시스템(https://www.alio.go.kr/)에 자료가 있는 기관으로, 기관별 공시에서 맨 아래부분에 보고서가 공개되어 있음\n\t- 대부분 웹페이지에 공개되는 것과 동일하나, 알리오에만 있는 경우도 있음\n- 웹페이지가 개편되면 방법은 달라짐(2026.3 기준임)\n\n### 검색 방법\n- 1순위. 직접 웹페이지에서 검색\n\t- 여러가지 한계로 일괄 검색에 의한 결과가 일정하지 않아 가장 정확한 것은 각 웹페이지에서 직접 검색임\n- 2순위. 구글링\n\t- Google의 검색식을 활용하여 검색\n\t- 자세한 방법은 공식 Help 문서 [더 정확한 Google 검색 결과 얻기] 확인, [고급 검색](https://www.google.com/advanced_search)에서 옵션 선택해서 검색 가능(https://support.google.com/websearch/answer/2466433?hl=ko#)\n\t- site 지정, AND/OR/-/따옴표 등 이용, 파일Type 이용 권고\n\t- 다만 구글링도 재현 가능성(같은 검색식으로 검색했을 때 동일한 결과가 나오는 것)은 떨어지나 자세히 설정하면 개선 가능\n- 3순위. LLM\n\t- LLM 종류에 따라 차이가 (매우) 커서, 정확한 자료를 모두 찾는 목적이라기보다는 관련 내용 검색 시에 이 웹페이지를 빼지 말고 찾는 것을 목적으로 함\n\t- 기관/단체 웹페이지 성격을 고려하여 LLM 프롬프트를 저장해놓고 쓸 수 있음\n\t- Deep research를 할 때도 이 프롬프트를 추가하면 빠지지 않고 검색 가능\n\t- 각 웹페이지에 대한 설명을 담은 파일을 업로드하고, 참고하여 답변하라고 요청\n\t- 필요에 따라 기관/단체를 선택하기\n\t- Claude의 경우 Skill로 지정해놓으면 사용하기 편함\n\t- 다음과 같은 규칙을 추가하면 도움이 됨\n\t\t- 절대 링크를 추측/생성하지 말 것\n\t\t- “검색 결과 화면에 실제로 존재하는 URL” 또는 “직접 열어 확인된 URL”만 출력할 것\n\t\t- 확인 불가하면 빈 칸으로 두고 ‘확인 불가’ 표기할 것\n\n\n### 기관/단체별 웹페이지 설명\nA. 정부 기관\n- 보건복지부\n\t- https://www.mohw.go.kr/\n\t- RSS가능\n\t- 주 자료 메뉴 : 정보 -> 연구조사발간자료\n\t- 추천 메뉴 : [보건복지부자료실](https://library.mohw.go.kr/), 사업별 페이지(통합돌봄, 의료혁신 등)\n- 질병관리청\n\t- https://www.kdca.go.kr/\n\t- RSS가능\n\t- 주 자료 메뉴 : 연구보고서는 국립보건연구원으로 연결\n\t- 추천 메뉴 : 사업별 페이지(감염병포털, 국건영, 지보계, 만성질환건강통계, 예방접종도우미 등)\n- 식품의약품안전처\n\t- https://www.mfds.go.kr/\n\t- RSS가능\n\t- 주 자료 메뉴 : 법령자료 --> 자료실\n\t- 추천 메뉴 : 관련 누리집 모음\n- 한국보건사회연구원\n\t- https://www.kihasa.re.kr\n\t- RSS가능\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 발간자료(보고서, 정기간행물)\n\t- 추천 메뉴 : [보건복지데이터포털](https://www.kihasa.re.kr/dataportal/main.html)\n\t- [연구성과물아카이브](https://repository.kihasa.re.kr/)\n- 한국건강증진개발원\n\t- https://www.khepi.or.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 자료실\n\t- 추천 메뉴 : 유튜브 토론회/공청회 등\n- 국민건강보험공단\n\t- https://www.nhis.or.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 정책제도 --> 연구통계\n\t- 추천 메뉴 : 분야별 업무 사이트(건강보험빅데이터플랫폼, 비급여 정보 포탈)\n- 건강보험심사평가원\n\t- https://www.hira.or.kr/\n\t- RSS가능\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 의료정보 --> 연구통계\n\t- 추천 메뉴 : 주요연계업무사이트(보건의료빅데이터개방시스템, 병원평가통합포털, [HIRA OAK 리포지터리](https://repository.hira.or.kr/)), 조회/신청 -> 비급여진료비용 정보\n- 한국보건의료연구원(NECA)\n\t- https://www.neca.re.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 연구정보\n\t- 추천 메뉴 : 내부관련사이트(환자중심 의료기술 최적화 연구사업)\n- 국립중앙의료원 공공보건의료본부\n\t- https://www.ppm.or.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 각 센터 자료실\n\t- 추천 메뉴 : 헬스맵, 국립중앙의료원 메인 홈페이지도 참고(nmc.or.kr)\n- 국립암센터\n\t- https://www.ncc.re.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 따로 없음\n\t- 추천 메뉴 : 국가암지식정보센터\n- 한국보건의료정보원\n\t- https://www.khis.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 알림마당->자료실\n\t- 추천 메뉴 : 알림마당 -> 포럼/세미나 자료\n- 한국보건산업진흥원\n\t- https://www.khidi.or.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 동향과정보(게시판별로 따로)\n\t- 추천 메뉴 : 매트릭스 서비스\n- 한국보건복지인재원\n\t- https://www.kohi.or.kr/\n\t- 알리오에 있음\n\t- 주 자료 메뉴 : 소통마당 --> KOHI자료실\n\t- 추천 메뉴 : 유튜브\n- 국립재활원\n\t- https://www.nrc.go.kr/\n\t- 주 자료 메뉴 : 자료실\n\t- 추천 메뉴 : 중앙장애인보건의료센터\n- 국립정신건강센터\n\t- https://www.ncmh.go.kr/\n\t- 주 자료 메뉴 : 자료실\n\t- 추천 메뉴 : 정신건강연구소, 정신건강사업부\n\n B. 민간 기관, 단체 등\n\n - 대한의사협회 의료정책연구원(RIHP)\n\t- https://rihp.re.kr/\n\t- 주 자료 메뉴 : 연구자료\n- 대한치과의사협회 치과의료정책연구원\n\t- https://www.hpikda.or.kr/\n\t- 주 자료 메뉴 : 자료실, 발간자료\n- 대한민국의학한림원\n\t- https://www.namok.or.kr/\n\t- 주 자료 메뉴 : 자료실\n- 한국의학바이오기자협회\n\t- https://kamj.org/\n\t- 주 자료 메뉴 : 협회소식 --> 자료실\n- 연구공동체 건강과대안\n\t- https://www.chsc.or.kr/\n\t- RSS가능\n- 건강권 실현을 위한 보건의료단체연합\n\t- https://kfhr.org/\n\t- RSS가능\n- 의료 민영화 저지와 무상의료 실현을 위한 운동본부(무상의료운동본부)\n\t- https://medical.jinbo.net/xe/\n\t- RSS가능\n- 좋은공공병원만들기운동본부\n\t- https://peoples-hospital.campaignus.me/\n- 건강세상네트워크\n\t- https://konkang2020.tistory.com/\n\t- RSS가능\n- 인도주의실천의사협의회\n\t- https://www.humanmed.org/\n- 건강사회를 위한 치과의사회\n\t- https://gunchi.org/\n- 노동건강연대\n\t- https://laborhealth.or.kr/\n\t- RSS가능\n- 전국보건의료산업노동조합(보건의료노조)\n\t- https://bogun.nodong.org\n\t- RSS가능\n- 시민건강연구소\n\t- https://health.re.kr/\n\t- RSS가능\n- 한국환자단체연합회\n\t- https://www.koreapatient.com\n- 돌봄과 미래\n\t- https://dolbom-mirae.imweb.me\n- 사회건강연구소\n\t- https://www.ishealth.org/\n- 참여연대 사회복지위원회\n\t- https://www.peoplepower21.org/category/welfare\n- 전국의료산업노동조합연맹(의료노련)\n\t- https://fkmtu.net/\n- 내가만드는복지국가\n\t- https://mywelfarestate.kr/\n- 전국전공의노동조합\n\t- https://www.kirulabor.org\n- 대한의학회\n\t- https://www.kams.or.kr\n\t\nC. 전국공공보건의료지원단\n- 다른 센터/지원단도 많으나 광역 공공보건의료지원단에서 모두 파악하고 있어 제시함\n- 서울특별시 공공보건의료지원단: https://seoulphri.seoulhealth.kr/\n- 부산광역시 공공보건의료지원단: https://www.bhi.or.kr/\n- 인천광역시 공공보건의료지원단: https://www.ippi.or.kr/\n- 대구광역시 공공보건의료지원단: https://www.dgphpi.or.kr/\n- 대전광역시 공공보건의료지원단: https://djpi.or.kr/\n- 광주광역시 공공보건의료지원단: https://giph.or.kr/\n- 울산광역시 공공보건의료지원단: https://ulsanfamily.com/\n- 경기도 공공보건의료지원단: https://www.ggpi.or.kr/\n- 강원특별자치도 공공보건의료지원단: https://www.gwppi.or.kr/\n- 충청북도 공공보건의료지원단: https://cbphpi.or.kr/\n- 충청남도 공공보건의료지원단: https://chnpi.or.kr/\n- 전북특별자치도 공공보건의료지원단: https://www.jbhepi.or.kr/\n- 전라남도 공공보건의료지원단: https://www.jncare.go.kr/\n- 경상북도 공공보건의료지원단: https://gbpi.or.kr/\n- 경상남도 공공보건의료지원단: https://gnpi.or.kr/\n- 제주특별자치도 공공보건의료지원단: https://jiph.or.kr/\n";
+RAW["gray2"]="## 한국 보건의료정책 Gray Literature 검색 방법 - Part2. 통합검색\n\n026.03.18 기준\n\n주의 : 기술적인 부분은 시점에 따라 달라질 수 있으며, 보건의료 중에서 정책 관련이고 한국 자료에만 해당\n### **배경**\n- 첫째, 한국 보건의료정책 관련 자료 중 Gray Literature는 체계적으로 정리되어 있지 않아 검색이 어려움\n\t- Peer review된 논문의 경우도 Pubmed에 등재(Pubmed에 등재되는 한국/외국 저널에 실리는 경우)되지 않으면 마찬가지 상황이며 이에 대해서는 따로 정리 예정\n\t- Gray Literature(회색 문헌) : 학술지나 상업 출판물을 통해 정식 배포되지 않고 비공식 채널로 유통되는 연구·정책 자료. 주로 정부 보고서, 토론회 자료집, 백서, 컨퍼런스 프로시딩, 정책 브리핑 등을 포함\n- 둘째, 다양한 LLM과 Search Engine(Google 등)에서 검색이 가능하나, 소위 'LLM이 못 보는 자료'(검색되기 좋은 페이지만 검색하여 결과를 제시하는 편향)가 존재하며 잘 알고 있는 분야를 질의했을 때 검토 Source가 한정된다는 것을 경험할 수 있음\n\t- 특히 웹페이지 구조가 복잡하고 자료 다운로드와 검색에 로그인(SSO)·권한검증·세션쿠키·토큰만료·캡차·Referer 검사 등이 적용되는 경우 구체적으로 검색방법을 지정하지 않으면 포함하지 않게 됨\n- 셋째, 안정적인 아카이빙, 레포지토리가 충분하지 않아 통합적으로 검색할 수 있는 웹페이지가 부족함\n\t- Part1에서는 기관 중심으로 제시하고, Part2는 통합검색용 DB가 있는 기관을 정리\n\n### 정리 기준 설명\n- 검색 데이터베이스가 있어서 보건의료정책 관련 자료가 있는 웹페이지를 정리\n\t- 포함 기준은 작성자의 주관적 판단이며 가능한 넓게 정했으며, 보고서를 제공하나 비율이 매우 낮은 경우는 제외\n- 포함 자료는 해당 웹페이지에 제시된 내용을 중심으로 작성했으나 대부분이 어떤 자료를 제공하고 있는지 구체적으로 제시하지 않음\n- 검색 방법은 기능을 중심으로 기술했으며, 구체적인 검색 방법은 계속 변경될 수 있어 적지 않음\n\t- 검색연산자 : 조건식 가능, 선택으로 가능, 불가능으로 구분했으며 조건식 가능은 \"사과 AND 딸기\"처럼 직접 식을 써서 검색할 수 있다는 것이고, 선택으로 가능은 검색 메뉴에서 AND, OR 등을 선택할 수 있다는 것임\n\t- 검색 필드는 목차까지 검색되는지 여부만 기술했는데, 제목과 키워드 외에 강력한 검색 기능이 될 수 있기 때문임(물론 반대로 필요없는 결과가 많이 나올 수 있음)\n\t- 상세/고급 검색을 기준으로 기술하였으며, 자료의 종류(학술논문, 보고서, 도서 등)는 웹페이지마다 분류가 상이하여 따로 적지 않음\n- 내보내기는 문헌관리도구(Endnote, Refworks, Zotero등)에서 불러오기 쉬운 RIS형식을 지원하는지가 중요하며 엑셀, Text파일로 지원하는 경우도 적음\n- Open API : 제공 여부와 상세검색 API 제공 여부로 정리\n- 웹페이지가 개편되면 방법은 달라짐(2026.2 기준임)\n\n### 검색 우선 순위\n- 공공 8개, 민간 4개를 정리했고 12개 각각에서 검색하는 것이 가장 확실함\n\t- 하지만,중복이 매우 많고 각각의 검색에 시간이 많이 소요되며(검색식 방식이 아닌 메뉴 선택) 검색결과를 내보내기하는 과정에도 시간이 많이 걸림(일부 웹페이지는 내보낼 수 있는 숫자를 제한해서 여러번 해야하는 경우가 있음)\n\t- 해결방법은 주요 기관에서 제공하는 API를 이용하여 통합 검색하는 웹페이지를 만들고 여기서 Pubmed방식의 검색이 가능하도록 해야하는데, 기술적으로 충분히 가능하나 예산/운영주체 등이 정해져야 하며 누군가(?) 또는 정부에서 진행했으면 함\n- AI로 검색하는 것 가능할 수 있으나 현 시점에서 활용이 쉽지 않다고 2026년2월에 정리했으나, 3월에 다시 시도해본 결과 곧 가능할 것 같음. 실제로 chatGPT, claude, gemini는 크롤링 code를 제안했지만, perplexity는 느리지만 성공했고 Manus는 완벽하게 6000여개 검색 결과 목록을 csv파일로 만들어줌(26.03.18 기준). 다만 여전히 웹페이지 구조가 복잡한 것은 여전하며, 동일한 작업을 Pubmed에 대해 실행했을 때는 이미 완벽하게 RIS파일로 만들어줌\n- 국내의 경우 외부 AI가 검색하기 쉽게 해놓는 것보다, 자체 데이터에 대한 AI검색 Tool을 만들어 놓는 경우가 많음\n- 우선 순위는 12개 웹페이지 중 어디를 먼저 찾아봐야하는가임\n\t- 포함하는 자료의 범위를 구체적으로 분석해서 Core를 정하는 작업이 필요하나 학술지와 다르게 기준 설정이 어려워서 주요 정부기관/연구기관을 포함하는 것을 기준으로 설정(전적으로 작성자 검토 결과이고 체계적인 검토를 한 것은 아님)\n\t- Core DB(안) : 국립중앙도서관, 국회도서관, 사이언스온, 프리즘\n\t- (검색범위를 넓히기 위한) 부가 DB(안) : NKIS 국가정책연구포털, 국립의과학지식센터, RISS, 알리오\n\t- (기관구독 등으로 접근성이 있으면) 확장 선택 DB(안): 민간 기관 4개(DBpia, KISS, e-article, 교보문고 스콜라)\n- Core DB\n\t- 국립중앙도서관, 국회도서관은 납본제가 적용되는 곳으로 가장 우선임\n\t- 사이언스온은 KISTI(한국과학기술정보연구원)가 운영하며 과학기술 부분에 더 전문성이 있으나 국가R&D연구보고서를 대부분 포함\n\t- 프리즘은 중앙정부외에도 지방정부 발주 연구가 포함되어 있음\n- 부가 DB\n\t- NKIS 국가정책연구포털은 26개 정부연구기관 보고서를 제공하며 Core에서 검색될 가능성이 높으나 보고서 외 정책자료집, 세미나자료집 등이 있어 유용\n\t- RISS는 한국교육학술정보원이 운영하며 학술지 위주여서 연구보고서는 상대적으로 적음\n\t- 국립의과학지식센터는 질병관리청 산하로 의과학 분야에 특화되어 있으며 질병관리청 자료 등이 더 풍부하게 포함되어 있음\n\t- 알리오는 공기업, 준정부기관, 기타공공기관의 경영공시를 하는 웹페이지로 연구보고서는 공개되는 정보 중 하나로 자체 웹페이지에서 공개하지 않거나 찾기 어려운 자료가 여기에만 공개되는 경우가 있음\n- 확장 선택 DB\n\t- 민간 4개(DBpia, KISS, e-article, 교보문고 스콜라)로 전반적으로 학술지 위주여서 연구보고서 등은 풍부하지 않음\n\t  \n### 기관/단체별 웹페이지 설명\n- 검색연산자 : 조건식 가능, 선택으로 가능, 불가능으로 구분했으며 조건식 가능은 \"사과 AND 딸기\"처럼 직접 식을 써서 검색할 수 있다는 것이고, 선택으로 가능은 검색 메뉴에서 AND, OR 등을 선택할 수 있다는 것임\n\t-  검색 필드는 목차나 초록까지 검색되는지 여부만 기술했는데, 제목과 키워드 외에 강력한 검색 기능이 될 수 있기 때문임(물론 반대로 필요없는 결과가 많이 나올 수 있음)\n\t- 상세/고급 검색을 기준으로 기술하였으며, 자료의 종류(학술논문, 보고서, 도서 등)는 웹페이지마다 분류가 상이하여 따로 적지 않음\n- 내보내기는 문헌관리도구(Endnote, Refworks, Zotero등)에서 불러오기 쉬운 RIS형식을 지원하는지가 중요하며 엑셀, Text파일로 지원하는 경우도 적음\n\n- 국립중앙도서관\n\t- https://www.nl.go.kr\n\t- 운영 기관 : 문화체육관광부 소속 기관\n\t- 포함 자료 : 도서, 타도서관 연계자료 등\n\t- 검색 방법\n\t\t- 검색연산자 : 선택으로 가능\n\t\t- 검색 필드 : 목차 검색 불가능, 제목, 키워드, 발행자, 저자 검색 가능\n\t\t- 기타 특징 : 주제별 검색 가능\n\t- 내보내기 : RIS가능\n\t- 오픈 API : 제공(상세검색 포함)\n \n- 국회도서관\n\t- https://www.nanet.go.kr/\n\t- 운영 기관 : 국회\n\t- 포함 자료 : 도서자료, 국회자료, 멀티미디어, 동영상 등\n\t- 검색 방법\n\t\t- 검색연산자 : 선택으로 가능\n\t\t- 검색 필드 : 목차 검색 가능, 제목, 키워드, 발행자, 저자 검색 가능\n\t\t- 기타 특징 : 관련기본어 리스트 제공\n\t- 내보내기 : RIS가능\n\t- 오픈 API : 제공(상세검색 포함)\n\n- ScienceON\n\t- https://scienceon.kisti.re.kr\n\t- 운영 기관 : 과학기술정보통신부 산하 한국과학기술정보연구원\n\t- 포함 자료 : 국가연구개발사업 수행을 통해 창출된 국가 R&D 보고서와 KISTI 및 연구소, 기업체 등에서 생산한 각종 분석리포트 제공\n\t- 검색 방법\n\t\t- 검색연산자 : 가능(AND/OR는 메뉴 선택이고 다른 연산자는 입력 가능)\n\t\t- 검색 필드 : 목차/초록 검색 가능, 제목, 키워드, 발행자, 저자 검색 가능\n\t\t- 기타 특징 : \n\t- 내보내기 : RIS불가능, Text/엑셀 가능\n\t- 오픈 API : 제공(상세검색 포함)\n\n- PRISM 정책연구관리시스템\n\t- https://www.prism.go.kr/\n\t- 운영 기관 : 행정안전부\n\t- 포함 자료 : 정책연구보고서(지자체 포함)\n\t- 검색 방법\n\t\t- 검색연산자 : 일부 가능\n\t\t- 검색 필드 : 목차 검색 가능 , 주제어, 분류, 기관 검색 가능\n\t\t- 기타 특징 : \n\t- 내보내기 : RIS불가능, 내보내기 불가능\n\t- 오픈 API : 제공(상세검색 포함, 웹페이지 안내는 없고 공공데이터 포털에 있음)\n\n- NKIS 국가정책연구포털\n\t- https://www.nkis.re.kr/\n\t- 운영 기관 : 국무총리 산하 경제·인문사회연구회\n\t- 포함 자료 : 경제·인문사회연구회 산하 KDI, 한국교육개발원 등 26개 소관 연구기관 및 3개의 부설기관에서 생산하는 연구성과물, 보고서 외 정책자료집, 세미나 자료 등\n\t- 검색 방법\n\t\t- 검색연산자 : 불가능\n\t\t- 검색 필드 : 목차/초록 검색 가능\n\t\t- 기타 특징 : \n\t- 내보내기 : RIS불가능, 내보내기 불가능\n\t- 오픈 API : 제공(상세검색 포함)\n\n- 국립의과학지식센터\n\t- https://library.nih.go.kr/\n\t- 운영 기관 : 질병관리청 산하 국립보건연구원\n\t- 포함 자료 : 국가 보건의료기관에서 예산을 투입하여 수행한 연구개발과제의 성과(2010년 이후)\n\t- 검색 방법\n\t\t- 검색연산자 : 일부 가능\n\t\t- 검색 필드 : 목차 검색 불가능, 과제명, 키워드 가능\n\t\t- 기타 특징 : 상세검색에서는 통합검색이 불가능\n\t- 내보내기 : RIS불가능, 엑셀 가능\n\t- 오픈 API : 제공(상세검색 포함)\n\n- 알리오\n\t- www.alio.go.kr\n\t- 운영 기관 : 기획재정부\n\t- 포함 자료 : 기관별 자체연구보고서, 외부용역연구보고서\n\t- 검색 방법\n\t\t- 검색연산자 : 불가능\n\t\t- 검색 필드 : 제목만 가능\n\t\t- 기타 특징 : 기관별로만 검색 가능\n\t- 내보내기 : RIS불가능, 내보내기 불가능\n\t- 오픈 API : 제공(상세검색 포함)\n\n- RISS 학술연구정보서비스\n\t- https://www.riss.kr/\n\t- 운영 기관 : 교육부 산하 한국교육학술정보원\n\t- 포함 자료 : 연구보고서, 단행본\n\t- 검색 방법\n\t\t- 검색연산자 : 일부 가능\n\t\t- 검색 필드 : 저자, 발행기관만 가능\n\t\t- 기타 특징 : \n\t- 내보내기 : RIS가능\n\t- 오픈 API : 제공(상세검색 포함)\n \n- DBpia\n\t- https://www.dbpia.co.kr/\n\t- 운영 기관 : 누리미디어(민간)\n\t- 포함 자료 : 연구보고서\n\t- 검색 방법\n\t\t- 검색연산자 : 일부 가능\n\t\t- 검색 필드 : 목차 검색 불가능\n\t\t- 기타 특징 : \n\t- 내보내기 : RIS가능\n\t- 오픈 API : 제공(상세검색 포함)\n \n- KISS\n\t- https://kiss.kstudy.com/\n\t- 운영 기관 : 한국학술정보(민간)\n\t- 포함 자료 : 자료 유형 구분 없음\n\t- 검색 방법\n\t\t- 검색연산자 : 일부 가능\n\t\t- 검색 필드 : 목차 가능, 키워드 가능\n\t- 내보내기 : RIS불가능, 내보내기 불가능\n\t- 오픈 API : 제공 없음\n \n- earticle\n\t- https://www.earticle.net/\n\t- 운영 기관 : (주)학술교육원(민간)\n\t- 포함 자료 : 단행본, 기타\n\t- 검색 방법\n\t\t- 검색연산자 : 일부 가능\n\t\t- 검색 필드 : 목차 가능, 키워드 가능\n\t- 내보내기 : RIS가능\n\t- 오픈 API : 제공 없음\n\n- 교보문고 스콜라\n\t- https://scholar.kyobobook.co.kr\n\t- 운영 기관 : 교보문고(민간)\n\t- 포함 자료 : 자료 유형 구분 없음\n\t- 검색 방법\n\t\t- 검색연산자 : 일부 가능\n\t\t- 검색 필드 : 목차 가능, 키워드 가능 \n\t- 내보내기 : RIS가능\n\t- 오픈 API : 제공 없음";
+window.addEventListener("DOMContentLoaded",function(){
+  if(typeof marked!=="undefined"){marked.use({breaks:true,gfm:true});for(var k in PAGES){document.getElementById(PAGES[k].md).innerHTML=marked.parse(RAW[k])}}
+  else{for(var k in PAGES){var e=document.getElementById(PAGES[k].md);e.innerHTML="<pre style='white-space:pre-wrap;font-size:13px'>"+RAW[k].replace(/</g,"&lt;").replace(/>/g,"&gt;")+"</pre>"}}
+});
+</script>
+</body>
+</html>
