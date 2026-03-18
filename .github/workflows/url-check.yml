@@ -1,0 +1,80 @@
+name: Weekly URL Health Check
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'   # 매주 월요일 00:00 UTC = 09:00 KST
+  workflow_dispatch:        # 수동 실행 허용
+
+jobs:
+  check-urls:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check all URLs
+        id: check
+        run: |
+          FAIL_LIST=""
+          FAIL_COUNT=0
+
+          while IFS= read -r url || [[ -n "$url" ]]; do
+            [[ -z "$url" || "$url" == \#* ]] && continue
+
+            HTTP=$(curl -o /dev/null -s -w "%{http_code}" \
+              --max-time 15 --retry 2 --retry-delay 3 \
+              -L -A "Mozilla/5.0 (URL-health-check)" \
+              "$url" 2>/dev/null)
+
+            if [[ "$HTTP" == "200" || "$HTTP" == "301" || "$HTTP" == "302" || \
+                  "$HTTP" == "303" || "$HTTP" == "307" || "$HTTP" == "308" ]]; then
+              echo "  OK  [$HTTP] $url"
+            else
+              echo "  FAIL[$HTTP] $url"
+              FAIL_LIST="${FAIL_LIST}- \`${HTTP}\` ${url}\n"
+              FAIL_COUNT=$((FAIL_COUNT + 1))
+            fi
+          done < urls.txt
+
+          echo "fail_count=$FAIL_COUNT" >> "$GITHUB_OUTPUT"
+
+          # 멀티라인 출력 저장
+          {
+            echo "fail_list<<EOF"
+            echo -e "$FAIL_LIST"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create Issue if failures found
+        if: steps.check.outputs.fail_count != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const date = new Date().toLocaleDateString('ko-KR', {
+              timeZone: 'Asia/Seoul',
+              year: 'numeric', month: 'long', day: 'numeric'
+            });
+            const failCount = '${{ steps.check.outputs.fail_count }}';
+            const failList  = `${{ steps.check.outputs.fail_list }}`;
+
+            const body = [
+              `## URL 오류 감지 — ${date}`,
+              '',
+              `총 **${failCount}개** URL에서 오류가 발생했습니다.`,
+              '',
+              '### 오류 목록',
+              failList,
+              '',
+              '> 자동 생성 이슈 · [워크플로우 로그](' +
+                `https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`,
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              title: `[URL 오류] ${failCount}개 링크 점검 필요 (${date})`,
+              body,
+              labels: ['url-check', 'automated'],
+            });
